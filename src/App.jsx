@@ -67,12 +67,16 @@ function App() {
   const [Image, setImage] = useState(Process);
   const [Cantidad, setCantidad] = useState(null);
   const [Many, setMany] = useState([]);
+  useEffect(() => {
+    setType(null);
+    setCategoria(null);
+  }, [Cantidad, Image, Many]);
   if (Type && Categoria) {
     ready = (
-      <div>
+      <div id="Botones">
         <input
           type="button"
-          value="one img"
+          value="Unique Image"
           onClick={() => {
             api(Type, Categoria);
             setCantidad("one");
@@ -80,7 +84,7 @@ function App() {
         />
         <input
           type="button"
-          value="ten img"
+          value="Several Images"
           onClick={() => {
             api2(Type, Categoria);
             setCantidad("varios");
@@ -91,35 +95,18 @@ function App() {
   }
   return (
     <>
-      <h1>Generador de Imagenes</h1>
-      <nav id="contenedor">
-        <DropdownButton
-          id="dropdown-item-button"
-          title="Tipo de Imagen"
-          onSelect={(eventKey) => {
-            console.log("valor de type :", eventKey);
-            setType(eventKey);
-          }}
-        >
-          {type.map((e, i) => {
-            return (
-              <DropdownItem key={i} eventKey={e}>
-                {e.charAt(0).toUpperCase() + e.slice(1)}
-              </DropdownItem>
-            );
-          })}
-        </DropdownButton>
-        {Type === "sfw" && (
+      <div id="Body">
+        <h1 id="Title">Generador de Imagenes</h1>
+        <nav id="contenedor">
           <DropdownButton
             id="dropdown-item-button"
-            className="custom-dropdown-menu"
-            title="Categoria Sfw"
+            title="Tipo de Imagen"
             onSelect={(eventKey) => {
-              console.log("Categoria a usar", eventKey);
-              setCategoria(eventKey);
+              console.log("valor de type :", eventKey);
+              setType(eventKey);
             }}
           >
-            {cat1.map((e, i) => {
+            {type.map((e, i) => {
               return (
                 <DropdownItem key={i} eventKey={e}>
                   {e.charAt(0).toUpperCase() + e.slice(1)}
@@ -127,43 +114,62 @@ function App() {
               );
             })}
           </DropdownButton>
+          {Type === "sfw" && (
+            <DropdownButton
+              id="dropdown-item-button"
+              className="custom-dropdown-menu"
+              title="Categoria Sfw"
+              onSelect={(eventKey) => {
+                console.log("Categoria a usar", eventKey);
+                setCategoria(eventKey);
+              }}
+            >
+              {cat1.map((e, i) => {
+                return (
+                  <DropdownItem key={i} eventKey={e}>
+                    {e.charAt(0).toUpperCase() + e.slice(1)}
+                  </DropdownItem>
+                );
+              })}
+            </DropdownButton>
+          )}
+          {Type === "nsfw" && (
+            <DropdownButton
+              id="dropdown-item-button"
+              title="Categoria Nsfw"
+              onSelect={(eventKey) => {
+                console.log("Categoria a usar", eventKey);
+                setCategoria(eventKey);
+              }}
+            >
+              {cat2.map((e, i) => {
+                return (
+                  <DropdownItem key={i} eventKey={e}>
+                    {e.charAt(0).toUpperCase() + e.slice(1)}
+                  </DropdownItem>
+                );
+              })}
+            </DropdownButton>
+          )}
+        </nav>
+        {ready}
+        {Cantidad === "one" && (
+          <div id="conteiner">
+            <img src={Image} alt="imagen" />
+          </div>
         )}
-        {Type === "nsfw" && (
-          <DropdownButton
-            id="dropdown-item-button"
-            title="Categoria Nsfw"
-            onSelect={(eventKey) => {
-              console.log("Categoria a usar", eventKey);
-              setCategoria(eventKey);
-            }}
-          >
-            {cat2.map((e, i) => {
+        {Cantidad === "varios" && (
+          <Carousel>
+            {Many.map((e, key) => {
               return (
-                <DropdownItem key={i} eventKey={e}>
-                  {e.charAt(0).toUpperCase() + e.slice(1)}
-                </DropdownItem>
+                <Carousel.Item key={key}>
+                  <img className="d-block w-100" src={e} alt="asd" />
+                </Carousel.Item>
               );
             })}
-          </DropdownButton>
+          </Carousel>
         )}
-      </nav>
-      {ready}
-      {Cantidad === "one" && (
-        <div id="conteiner">
-          <img src={Image} alt="imagen" />
-        </div>
-      )}
-      {Cantidad === "varios" && (
-        <Carousel>
-          {Many.map((e, key) => {
-            return (
-              <Carousel.Item key={key}>
-                <img className="d-block w-100" src={e} alt="asd" />
-              </Carousel.Item>
-            );
-          })}
-        </Carousel>
-      )}
+      </div>
     </>
   );
 }
