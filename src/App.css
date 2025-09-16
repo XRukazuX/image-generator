@@ -1,0 +1,23 @@
+#contenedor {
+  width: 100dvw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.custom-dropdown-menu .dropdown-menu {
+  max-height: 200px;
+  overflow-y: auto;
+}
+#conteiner {
+  width: 100vw;
+  height: 80vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+img {
+  width: 80vw;
+  height: 80vh;
+  object-fit: contain;
+}
