@@ -1,12 +1,9 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyectos usando api
 
-Currently, two official plugins are available:
+Se inicia consiguiendo datos de la api proporcionada por waifu.pics. Los datos son imagenes de dos tipos sfw y nsfw, en el proyecto se pedira que selecciones una de los dos tipo y a continuacion aparecera otra seleccion para que tipo de categoria se quiere elegir. Como ultimo se le pedira si quiere una o varias imagenes las cuales se mostraran al momento de hacer Click.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Se tiene que tener en cuenta que las imagenes son aleatorias. Si selecciono varias imagenes estas se presentaran en modo carousels.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+El proyecto hace uso de herramientas de React Bootstrap para algunos elementos como botones o presentacion de imagenes. Se trato de ajustar lo mas que puso el css para que sea lo mas adaptativo a distintas plataformas o dispositivos
