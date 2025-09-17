@@ -66,7 +66,7 @@ function App() {
   const [Categoria, setCategoria] = useState(null);
   const [Image, setImage] = useState(Process);
   const [Cantidad, setCantidad] = useState(null);
-  const [Many, setMany] = useState([]);
+  const [Many, setMany] = useState([Process]);
   useEffect(() => {
     setType(null);
     setCategoria(null);

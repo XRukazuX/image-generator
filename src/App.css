@@ -13,11 +13,13 @@
   overflow-y: auto;
 } /*Ajusta la barra de seleccion*/
 #contenedor {
-  width: 100dvw;
+  width: clamp(320px, 30vw, 100dvw);
   height: 6dvh;
   max-height: 8dvh;
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-evenly;
 }
 #Botones {
@@ -41,6 +43,7 @@ img {
 }
 h1 {
   color: white;
+  text-align: center;
   animation: text-flicker-in-glow 3s linear 1s alternate;
 }
 @keyframes text-flicker-in-glow {
@@ -186,14 +189,14 @@ h1 {
   }
 }
 
-@media (min-width: 320px) {
+@media (min-width: 320px) and (orientation: portrait) {
   #Body {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+
     align-content: center;
   }
-  h1 {
+  #Title {
     width: 100%;
     height: 5vh;
     line-height: 5vh;
@@ -201,14 +204,33 @@ h1 {
     justify-items: center;
     font-size: clamp(01rem, 6vw, 2rem);
   }
-} /* Teléfonos mini */
-@media (min-width: 480px) {
-} /* Teléfonos comunes */
-@media (min-width: 768px) {
-} /* Tablets */
-@media (min-width: 1024px) {
-} /* Escritorio */
-@media (min-width: 1280px) {
-} /* Escritorio grande */
-@media (min-width: 1536px) {
-} /* Pantallas 2K */
+  #Botones {
+    width: clamp(320px, 30vw, 100dvw);
+    height: 5vh;
+    margin: 0 auto;
+    align-items: center;
+  }
+  #Botones input {
+    width: clamp(20%, 40%, 50%);
+    height: 4vh;
+  }
+  .carousel,
+  #conteiner {
+    width: 100vw;
+    height: 80vh;
+  }
+}
+@media (min-width: 320px) and (orientation: landscape) {
+  #Title {
+    width: 100%;
+    height: 5vh;
+    line-height: 5vh;
+    text-align: center;
+    justify-items: center;
+    font-size: clamp(01rem, 6vw, 1rem);
+  }
+  #contenedor div {
+    width: clamp(20%, 50%, 45%);
+    height: 50%;
+  }
+}
