@@ -6,7 +6,8 @@
 #Body {
   width: 100dvw;
   height: 100dvh;
-  background-color: black;
+  background: black url(./assets/Imagenes/logo2.png) center no-repeat;
+  background-size: contain;
 } /*Cuerpo del proyecto que ocupe toda la pantalla*/
 .custom-dropdown-menu .dropdown-menu {
   max-height: 200px;
